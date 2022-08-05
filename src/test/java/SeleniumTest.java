@@ -14,6 +14,7 @@ public class SeleniumTest {
 
     @BeforeAll
     static void setUpAll(){
+
         System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
@@ -21,11 +22,6 @@ public class SeleniumTest {
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-    }
-
-    @BeforeEach
-    void setUp(){
-        driver = new ChromeDriver();
     }
 
     @Test
