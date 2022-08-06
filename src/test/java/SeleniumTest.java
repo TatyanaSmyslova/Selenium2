@@ -29,6 +29,12 @@ public class SeleniumTest {
         driver = new ChromeDriver();
     }
 
+    @AfterEach
+    void tearDown(){
+        driver.quit();
+        driver = null;
+    }
+
     @Test
     void test(){
         driver.get("http://localhost:9999");
@@ -38,11 +44,5 @@ public class SeleniumTest {
         driver.findElement(By.className("button_view_extra")).click();
         String text = driver.findElement(By.className("paragraph")).getText();
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", text.trim());
-    }
-
-    @AfterEach
-    void tearDown(){
-        driver.quit();
-        driver = null;
     }
 }
