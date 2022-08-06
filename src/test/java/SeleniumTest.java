@@ -1,3 +1,4 @@
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,20 +14,20 @@ public class SeleniumTest {
     private static WebDriver driver;
 
     @BeforeAll
-    static void setUpAll(){
+    public static void setUpAll() {
+        WebDriverManager.chromedriver().setup();
+    }
 
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+    @BeforeEach
+    public void setUp() {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-    }
+        driver.get(" http://localhost:9999");
 
-    @BeforeEach
-    void setUp(){
-        driver = new ChromeDriver();
     }
 
     @AfterEach
