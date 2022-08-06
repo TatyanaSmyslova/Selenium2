@@ -15,7 +15,7 @@ public class SeleniumTest {
     @BeforeAll
     static void setUpAll(){
 
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "driver\\chromedriver.exe");
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
